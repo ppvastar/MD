@@ -1,4 +1,4 @@
-# MD
+# Read Me
 This is the source code for the numerical calculations in manuscript http://arxiv.org/abs/1601.01402.
 The file "Makefile" is used to compile the main file "main.f90" on the Linux OS based platform.
 
