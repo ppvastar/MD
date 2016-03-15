@@ -1,11 +1,11 @@
-# This is the makefile to compile 
+# This is the makefile to compile the main file "main.f90"
 SOURCE0 = main.f90 
 SOURCE +=        			
 
-#Solve the topological charge. If not, comment the line below.
+#Solve the topological charge. If not, comment the directive below.
 MACRO+=-D__solve_topological_charge
 
-#Uncomment the line below to solve the eigenstates of the QD chain 
+#Uncomment the directive below to solve the eigenstates of the QD chain 
 #MACRO+=-D__solve_eigenstates
 
 exec=main.out
