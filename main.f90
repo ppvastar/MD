@@ -1,4 +1,4 @@
-!Declaration and initialization of parameters and common variables 
+!Declaration and initialization of parameters/variables 
 module constants
   implicit none
   
@@ -9,25 +9,26 @@ module constants
   !Site number of QD chain
   integer, parameter::N=1000
   
-  !Superconducting pairing energy, set as the energy unit and hence equal to 1
+  !Superconducting pairing energy, set as the energy unit (equal to 1)
   real*8, parameter::delta=1.d0
+  
   !Mean value of spin-conserving hopping
   real*8, parameter::t0=1.d0
   !Mean value of spin-flip hopping 
   real*8, parameter::tso0=0.5d0
 
-  !Fluctuation magnitude of on-site chemical potential (in unit of superconducting pairing energy, delta)
+  !Fluctuation magnitude of on-site chemical potential (in units of superconducting pairing energy, delta)
   real*8, parameter::delta_onsite=0.d0 !unit: delta 
-  !Fluctuation magnitude of spin-conserving hopping (in unit of its mean value, t0)
+  !Fluctuation magnitude of spin-conserving hopping (in units of its mean value, t0)
   real*8, parameter::delta_t=0.d0      !unit: t0
-  !Fluctuation magnitude of spin-flip hopping (in unit of superconducting pairing energy, delta)
+  !Fluctuation magnitude of spin-flip hopping (in units of superconducting pairing energy, delta)
   real*8, parameter::delta_tso=0.d0    !unit: delta
 
-  !Matrix of on-site chemical potentials along the chain withe sites N
+  !On-site chemical potentials along the chain with site number N
   real*8 onsite(N)   !unit:delta
-  !Matrix of spin-conserving hopping energies along the chain with site number N
+  !Spin-conserving hopping energies along the chain with site number N
   real*8 t(N)        !unit:delta
-  !Matrix of spin-flip hopping energies along the chain with site number N
+  !Spin-flip hopping energies along the chain with site number N
   real*8 tso(N)      !unit:delta 
 
   !Discretization of the Zeeman energy in the region: zm_init+[0,zm_D]*zm_step 
@@ -44,7 +45,7 @@ module constants
   !Matrix of the varying mean value of on-site chemical potentials
   real*8 mu(0:mu_D)
   
-  !Topological charge Q against Zeeman energy and mean value of on-site chemical potentials
+  !Topological charge against Zeeman energy and mean value of on-site chemical potentials
   real*8 q(0:zm_D,0:mu_D)
   
  
@@ -75,7 +76,7 @@ program main
   call random_tso
 
 
-  !Solve the topological charge with varying Zeeman energy and average chemical potential 
+  !Solve the topological charge for different Zeeman energies and average chemical potentials 
 #ifdef __solve_topological_charge
  
   do i=0,zm_D
@@ -118,8 +119,7 @@ end program main
 
 
 
-!Subroutine to initialize the four 4x4 matrices $sigma_0\tau_z$,$\sigma_y\tau_z$, $\sigma_z\tau_0$, $\sigma_0\tau_x$ in Eqs.~(3) and (4)
-!in manuscript http://arxiv.org/abs/1601.01402.
+!Subroutine to initialize constant matrices
 SUBROUTINE initialize_constant
   use constants
   
@@ -293,7 +293,7 @@ SUBROUTINE recursive(i_tmp,j_tmp)
   
 end SUBROUTINE recursive
 
-!Subroutine to solve the inverse of matrix A with dimension DIM
+!Subroutine to solve the inverse of matrix "A" with dimension "DIM"
 SUBROUTINE inverse(A,DIM)
   implicit none
   integer DIM
@@ -316,7 +316,7 @@ SUBROUTINE inverse(A,DIM)
 end SUBROUTINE inverse
 
 
-!Subroutine to solve the determinant of matrix A with dimension DIM
+!Subroutine to solve the determinant of matrix "A" with dimension "DIM"
 complex*16 function det(A,DIM)
   implicit none
   integer DIM
@@ -345,7 +345,7 @@ complex*16 function det(A,DIM)
 end  function det
 
 
-!Subroutine to calculate the "convolution" of matrics A and B defined by Eq.~(A6) in manuscript http://arxiv.org/abs/1601.01402.
+!Subroutine to calculate the "convolution" of matrics "A" and "B" defined by Eq.~(A6) in manuscript http://arxiv.org/abs/1601.01402.
 SUBROUTINE convolution(A,B)
   use constants
   complex*16 A(8,8),B(8,8)
@@ -391,7 +391,7 @@ SUBROUTINE convolution(A,B)
 end SUBROUTINE convolution
 
 
-!Subroutine to diagonalize a Hermitian matrix
+!Subroutine to diagonalize a Hermitian matrix "Ham" with dimension "order"
 SUBROUTINE diago(Ham, order, Eigenvalue)
   implicit none
   integer order
