@@ -1,4 +1,4 @@
-# This is the makefile to compile the files main.f90 
+# This is the makefile to compile the file main.f90 
 SOURCE0 = main.f90 
 SOURCE +=        			
 
