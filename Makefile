@@ -1,8 +1,11 @@
-# This is the makefile to compile the file main.f90 
+# This is the makefile to compile 
 SOURCE0 = main.f90 
 SOURCE +=        			
 
+#Solve the topological charge. If not, comment the line below.
 MACRO+=-D__solve_topological_charge
+
+#Uncomment the line below to solve the eigenstates of the QD chain 
 #MACRO+=-D__solve_eigenstates
 
 exec=main.out
@@ -11,8 +14,6 @@ OBJ0 = $(patsubst %.f90,%.o,$(SOURCE0))
 OBJ = $(patsubst %.f90,%.o,$(SOURCE))
 
 F90 = ifort 
-
-
 
 FFLAGS_FPP =  
 FFLAGS_FPP += -fpp 
