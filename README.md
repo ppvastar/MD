@@ -5,6 +5,7 @@ The file "Makefile" is used to compile the main source file "main.f90" on the Li
 Note that two preprocessor directives appear in the Makefile:
 
 MACRO+=-D__solve_topological_charge
+
 MACRO+=-D__solve_eigenstates
 
 The first directive is used to calculate the topological charge of the QD chain with varying Zeeman
