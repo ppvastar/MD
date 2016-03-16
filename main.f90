@@ -1,3 +1,5 @@
+!This the main file 
+
 !Declaration and initialization of parameters/variables 
 module constants
   implicit none
