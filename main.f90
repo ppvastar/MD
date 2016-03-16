@@ -1,4 +1,4 @@
-!This the main file 
+!This is the main file 
 
 !Declaration and initialization of parameters/variables 
 module constants
